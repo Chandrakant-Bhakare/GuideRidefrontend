@@ -1,0 +1,81 @@
+/* Container for the car grid */
+.car-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Space between car cards */
+  padding: 2rem; /* Padding around the grid */
+  background-color: #f8f9fa; /* Light background color for the section */
+}
+
+/* Style for individual car cards */
+.car-card {
+  background-color: #fff; /* White background for the card */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+  flex: 1 1 calc(33.333% - 1.5rem); /* Three cards per row with gap consideration */
+  max-width: calc(33.333% - 1.5rem); /* Limit the card width */
+  margin: auto; /* Center the card */
+}
+
+/* Hover effect for car cards */
+.car-card:hover {
+  transform: scale(1.05); /* Slightly zoom in */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Image styling inside the card */
+.car-card img {
+  width: 100%; /* Fit image width to card */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the image area */
+}
+
+/* Info section styling inside the card */
+.car-info {
+  padding: 1rem; /* Padding inside the info section */
+}
+
+/* Heading style */
+.car-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraph style */
+.car-info p {
+  font-size: 1rem;
+  color: #666; /* Darker text for description */
+  margin-bottom: 1rem;
+}
+
+/* View Details link styling */
+.car-info .view-details {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff; /* Primary button color */
+  color: #fff; /* White text color */
+  text-decoration: none;
+  border-radius: 4px; /* Rounded button corners */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.car-info .view-details:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .car-card {
+    flex: 1 1 calc(50% - 1.5rem); /* Two cards per row on medium screens */
+    max-width: calc(50% - 1.5rem); /* Limit the card width */
+  }
+}
+
+@media (max-width: 768px) {
+  .car-card {
+    flex: 1 1 100%; /* Full width on smaller screens */
+    max-width: 100%; /* Limit the card width */
+  }
+}

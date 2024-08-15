@@ -1,0 +1,55 @@
+.car-management-container {
+    padding: 20px;
+  }
+  
+  .car-management-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .car-management-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .add-car-form, .remove-car-form, .get-car-form {
+    flex: 1;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 600px) {
+    .car-management-actions {
+      flex-direction: column;
+    }
+  }
+  

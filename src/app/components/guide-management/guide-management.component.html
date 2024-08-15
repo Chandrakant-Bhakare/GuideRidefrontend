@@ -1,0 +1,53 @@
+<div class="container">
+  <!-- Add Guide Form -->
+  <div class="form-container">
+    <div class="section-header">Add Guide</div>
+    <form [formGroup]="guideForm" (ngSubmit)="onAddGuide()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <select id="rating" formControlName="rating">
+          <option *ngFor="let rating of ratings" [value]="rating">{{ rating }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="fare">Fare</label>
+        <input id="fare" formControlName="fare" type="number" />
+      </div>
+      <button type="submit" [disabled]="!guideForm.valid">Add Guide</button>
+    </form>
+  </div>
+
+  <!-- Remove Guide Form -->
+  <div class="form-container">
+    <div class="section-header">Remove Guide</div>
+    <form (ngSubmit)="onRemoveGuide()">
+      <div class="form-group">
+        <label for="removeId">Guide ID</label>
+        <input id="removeId" [(ngModel)]="removeId" name="removeId" type="text" />
+      </div>
+      <button type="submit" [disabled]="!removeId">Remove Guide</button>
+    </form>
+  </div>
+
+  <!-- Get Guide By ID Form -->
+  <div class="form-container">
+    <div class="section-header">Get Guide by ID</div>
+    <form (ngSubmit)="onGetGuideById()">
+      <div class="form-group">
+        <label for="getId">Guide ID</label>
+        <input id="getId" [(ngModel)]="getId" name="getId" type="text" />
+      </div>
+      <button type="submit" [disabled]="!getId">Get Guide</button>
+    </form>
+    <div *ngIf="guide" class="guide-details">
+      <h3>Guide Details:</h3>
+      <p><strong>Name:</strong> {{ guide.name }}</p>
+      <p><strong>Rating:</strong> {{ guide.rating }}</p>
+      <p><strong>Fare:</strong> {{ guide.fare }}</p>
+    </div>
+  </div>
+</div>

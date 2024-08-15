@@ -1,0 +1,87 @@
+<div class="car-management-container">
+  <header class="car-management-header">
+    <h1>Car Management</h1>
+    <p>Manage cars in your fleet by adding new cars, removing existing ones, or viewing details by ID.</p>
+  </header>
+
+  <section class="car-management-actions">
+    <!-- Add Car Form -->
+    <div class="action-card add-car-form">
+      <h2>Add New Car</h2>
+      <form [formGroup]="addCarForm" (ngSubmit)="addCar()">
+        <div class="form-group">
+          <label for="modelName">Car Name:</label>
+          <input type="text" id="modelName" formControlName="modelName" />
+          <div *ngIf="addCarForm.get('modelName')?.invalid && (addCarForm.get('modelName')?.dirty || addCarForm.get('modelName')?.touched)">
+            <small *ngIf="addCarForm.get('modelName')?.errors?.['required']">Car Name is required.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="registrationNumber">Registration Number:</label>
+          <input type="text" id="registrationNumber" formControlName="registrationNumber" />
+          <div *ngIf="addCarForm.get('registrationNumber')?.invalid && (addCarForm.get('registrationNumber')?.dirty || addCarForm.get('registrationNumber')?.touched)">
+            <small *ngIf="addCarForm.get('registrationNumber')?.errors?.['required']">Registration Number is required.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Car Type:</label>
+          <select id="type" formControlName="type">
+            <option value="">Select Car Type</option>
+            <option value="4 Seater">4 Seater</option>
+            <option value="6 Seater">6 Seater</option>
+            <option value="8 Seater">8 Seater</option>
+            <option value="Other">Other</option>
+          </select>
+          <div *ngIf="addCarForm.get('type')?.invalid && (addCarForm.get('type')?.dirty || addCarForm.get('type')?.touched)">
+            <small *ngIf="addCarForm.get('type')?.errors?.['required']">Car Type is required.</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fare">Fare:</label>
+          <input type="number" id="fare" formControlName="fare" />
+          <div *ngIf="addCarForm.get('fare')?.invalid && (addCarForm.get('fare')?.dirty || addCarForm.get('fare')?.touched)">
+            <small *ngIf="addCarForm.get('fare')?.errors?.['required']">Fare is required.</small>
+            <small *ngIf="addCarForm.get('fare')?.errors?.['min']">Fare must be a positive value.</small>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="addCarForm.invalid">Add Car</button>
+      </form>
+    </div>
+
+    <!-- Remove Car Form -->
+    <div class="action-card remove-car-form">
+      <h2>Remove Car</h2>
+      <form (ngSubmit)="removeCar()">
+        <div class="form-group">
+          <label for="removeCarId">Car ID:</label>
+          <input type="text" id="removeCarId" [(ngModel)]="removeCarId" name="removeCarId" />
+        </div>
+        <button type="submit">Remove Car</button>
+      </form>
+    </div>
+
+    <!-- Get Car by ID Form -->
+    <div class="action-card get-car-form">
+      <h2>Get Car by ID</h2>
+      <form (ngSubmit)="getCarById()">
+        <div class="form-group">
+          <label for="getCarId">Car ID:</label>
+          <input type="text" id="getCarId" [(ngModel)]="getCarId" name="getCarId" />
+        </div>
+        <button type="submit">Get Car</button>
+      </form>
+
+      <div *ngIf="carDetails">
+        <h3>Car Details:</h3>
+        <p><strong>Name:</strong> {{ carDetails.modelName }}</p>
+        <p><strong>Registration Number:</strong> {{ carDetails.registrationNumber }}</p>
+        <p><strong>Type:</strong> {{ carDetails.type }}</p>
+        <p><strong>Fare:</strong> {{ carDetails.fare | currency }}</p>
+      </div>
+    </div>
+  </section>
+</div>
